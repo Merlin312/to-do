@@ -7,6 +7,7 @@ export const EditMaodal = ({}) => {
       <View>
         <TextInput />
         <Button title="Відмінити" />
+        <Button title="Зберегти" />
       </View>
     </Modal>
   );
