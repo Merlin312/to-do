@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { AppCard } from '../components/ui/AppCard';
 import { THEME } from '../theme';
 
-export const TodoScreen = ({ goBack, todo }) => {
+export const TodoScreen = ({ goBack, todo, onRemove }) => {
+  const [madal, setModal] = useState(false);
   return (
     <View>
-      <AppCard>
-        <Text>{todo.title}</Text>
-        <Button title="Редагувати" />
+      <AppCard style={styles.card}>
+        <Text style={styles.titles}>{todo.title}</Text>
+        <Button
+          style={styles.btn}
+          title="Редагувати"
+          onPress={() => setModal(true)}
+        />
       </AppCard>
 
       <View style={styles.bottons}>
@@ -20,7 +25,7 @@ export const TodoScreen = ({ goBack, todo }) => {
           <Button
             title="Видалити"
             color={THEME.DANGER_COLOR}
-            onPress={() => console.log('To remove')}
+            onPress={() => onRemove(todo.id)}
           />
         </View>
       </View>
@@ -33,7 +38,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  card: {
+    marginBottom: 20,
+    padding: 10,
+  },
   botton: {
     width: '40%',
+  },
+  titles: {
+    fontSize: 20,
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
+  },
+  btn: {
+    // flexDirection: 'row',
+    // fontSize: 40,
   },
 });
