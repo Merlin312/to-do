@@ -1,12 +1,39 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import React from 'react';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import { AppCard } from '../components/ui/AppCard';
+import { THEME } from '../theme';
 
-export const TodoScreen = props => {
+export const TodoScreen = ({ goBack, todo }) => {
   return (
     <View>
-      <Text>Todo Screen</Text>
-    </View>
-  )
-}
+      <AppCard>
+        <Text>{todo.title}</Text>
+        <Button title="Редагувати" />
+      </AppCard>
 
-const styles = StyleSheet.create({})
+      <View style={styles.bottons}>
+        <View style={styles.botton}>
+          <Button title="Назад" onPress={goBack} color={THEME.GREY_COLOR} />
+        </View>
+
+        <View style={styles.botton}>
+          <Button
+            title="Видалити"
+            color={THEME.DANGER_COLOR}
+            onPress={() => console.log('To remove')}
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  bottons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  botton: {
+    width: '40%',
+  },
+});

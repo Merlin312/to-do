@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, TextInput, Button, Alert } from 'react-native'
+import { THEME } from '../theme'
 
 export const AddTodo = ({ onSubmit }) => {
   const [value, setValue] = useState('')
@@ -9,7 +10,7 @@ export const AddTodo = ({ onSubmit }) => {
       onSubmit(value)
       setValue('')
     } else {
-      Alert.alert('Название дела не может быть пустым')
+      Alert.alert('Введіть будь ласка текст!')
     }
   }
 
@@ -19,11 +20,11 @@ export const AddTodo = ({ onSubmit }) => {
         style={styles.input}
         onChangeText={setValue}
         value={value}
-        placeholder='Введите название дела...'
+        placeholder='Введіть справу...'
         autoCorrect={false}
         autoCapitalize='none'
       />
-      <Button title='Добавить' onPress={pressHandler} />
+      <Button title='Добавити' onPress={pressHandler} />
     </View>
   )
 }
@@ -40,6 +41,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderStyle: 'solid',
     borderBottomWidth: 2,
-    borderBottomColor: '#3949ab'
+    borderBottomColor: THEME.MAIN_IOS_COLOR
   }
 })
