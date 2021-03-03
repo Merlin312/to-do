@@ -1,22 +1,86 @@
 import React from 'react';
-import { StyleSheet, TextInput, View, Button, Modal } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  Button,
+  Modal,
+  Alert,
+} from 'react-native';
 import { THEME } from '../theme';
+import { useState } from 'react';
 
-export const EditMaodal = ({ visible, goBack }) => {
+export const EditMaodal = ({ visible, onCancel, value, onSave }) => {
+  const [title, setTitle] = useState(value);
+
+  const saveHandler = () => {
+    if (title.trim().length < 1) {
+      Alert.alert(
+        'Помилка!',
+        `Минімальна довжина має бути 3 символа. Зараз ${
+          title.trim().length
+        } символів`
+      );
+    } else if (title.trim().length == 1) {
+      Alert.alert(
+        'Помилка!',
+        `Минімальна довжина має бути 3 символа. Зараз ${
+          title.trim().length
+        } символ`
+      );
+    } else if (title.trim().length <= 3) {
+      Alert.alert(
+        'Помилка!',
+        `Минімальна довжина має бути 3 символа. Зараз ${
+          title.trim().length
+        } символа`
+      );
+    } else {
+      onSave(title);
+    }
+  };
+
   return (
-    <Modal visible={visible}>
+    <Modal visible={visible} animationType="slide">
       <View style={styles.wrap}>
-        <TextInput />
-        <Button title="Відмінити" />
-        <Button title="Зберегти" />
-        <Button title="Назад" onPress={goBack} color={THEME.GREY_COLOR} />
+        <TextInput
+          value={title}
+          onChangeText={setTitle}
+          style={styles.input}
+          // відображає текст по дефолту
+          placeholder="Введіть назву.."
+          autoCapitalize="none"
+          //вводить обмеження максимальної кількості символів в 64
+          maxLength={64}
+        />
+        <View style={styles.buttons}>
+          <Button
+            title="Відмінити"
+            onPress={onCancel}
+            color={THEME.DANGER_COLOR}
+          />
+          <Button title="Зберегти" onPress={saveHandler} />
+        </View>
       </View>
     </Modal>
   );
 };
 const styles = StyleSheet.create({
   wrap: {
-    // width: '40%',
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input: {
+    padding: 10,
+    borderBottomColor: THEME.MAIN_IOS_COLOR,
+    borderBottomWidth: 2,
+    width: '80%',
+  },
+  buttons: {
+    width: '100%',
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });

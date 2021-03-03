@@ -4,16 +4,15 @@ import { StyleSheet, Text, View } from 'react-native';
 //в цьому файлі я працюю над карточкою
 export const AppCard = (props) => (
   <View style={{ ...styles.default, ...props.style }}>
-    <Text style={styles.textStyle}>{props.children}</Text>
+    <Text>{props.children}</Text>
   </View>
 );
 
 const styles = StyleSheet.create({
   default: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 20,
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-around',
+    // alignItems: 'center',
     // працюю над тінями картки, for ios
     shadowColor: '#000',
     shadowRadius: 2,
@@ -23,8 +22,5 @@ const styles = StyleSheet.create({
     elevation: 8,
     backgroundColor: '#fff',
     borderRadius: 10,
-  },
-  textStyle: {
-    // paddingBottom: 10,
   },
 });

@@ -4,23 +4,36 @@ import { EditMaodal } from '../components/EditModal';
 import { AppCard } from '../components/ui/AppCard';
 import { THEME } from '../theme';
 
-export const TodoScreen = ({ goBack, todo, onRemove }) => {
+export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
   const [modal, setModal] = useState(false);
+
+  const saveHandler = (title) => {
+    onSave(todo.id, title);
+    setModal(false);
+  };
+
   return (
     <View>
-      <EditMaodal visible={modal} goBack={goBack} />
+      <EditMaodal
+        value={todo.title}
+        visible={modal}
+        onCancel={() => setModal(false)}
+        onSave={saveHandler}
+      />
 
       <AppCard style={styles.card}>
-        <Text style={styles.titles}>{todo.title}</Text>
-        <Button
-          style={styles.btn}
-          title="Редагувати"
-          onPress={() => setModal(true)}
-        />
+        <View style={styles.bottons}>
+          <View>
+            <Text style={styles.titles}>{todo.title}</Text>
+          </View>
+          <View>
+            <Button title="Ред." onPress={() => setModal(true)} />
+          </View>
+        </View>
       </AppCard>
 
       <View style={styles.bottons}>
-        <View style={styles.botton}>
+        <View>
           <Button title="Назад" onPress={goBack} color={THEME.GREY_COLOR} />
         </View>
 
@@ -44,18 +57,14 @@ const styles = StyleSheet.create({
   card: {
     marginBottom: 20,
     padding: 10,
+    // justifyContent: 'space-around',
   },
   botton: {
     width: '40%',
   },
   titles: {
+    // paddingRight: 10,
     fontSize: 20,
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // alignItems: 'center',
-  },
-  btn: {
-    // flexDirection: 'row',
-    // fontSize: 40,
+    paddingTop: 7,
   },
 });
