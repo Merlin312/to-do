@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
+import { EditMaodal } from '../components/EditModal';
 import { AppCard } from '../components/ui/AppCard';
 import { THEME } from '../theme';
 
 export const TodoScreen = ({ goBack, todo, onRemove }) => {
-  const [madal, setModal] = useState(false);
+  const [modal, setModal] = useState(false);
   return (
     <View>
+      <EditMaodal visible={modal} goBack={goBack} />
+
       <AppCard style={styles.card}>
         <Text style={styles.titles}>{todo.title}</Text>
         <Button

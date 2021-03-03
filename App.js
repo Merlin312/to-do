@@ -56,7 +56,7 @@ export default function App() {
     content = (
       <TodoScreen
         onRemove={removeTodo}
-        goBack={() => setTodoId(null)}
+        goBack={() => setTodoId()}
         todo={selectedTodo}
       />
     );
