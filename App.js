@@ -101,7 +101,7 @@ export default function App() {
 
   return (
     <View>
-      <Navbar title="Todo App" />
+      <Navbar title="Todo App!" />
       <View style={styles.container}>{content}</View>
     </View>
   );
