@@ -12,4 +12,8 @@ web-build/
 # macOS
 .DS_Store
 .EditModal.js.swp
+assets/fonts/
 .gitignore
+.expo-shared
+.package-lock.json
+.package.json

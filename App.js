@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
 import * as Font from 'expo-font';
-
-import AppLoading from 'expo';
+// import AppLoading from 'expo';
+import AppLoading from 'expo-app-loading';
 
 import { Navbar } from './src/components/Navbar';
 import { MainScreen } from './src/screens/MainScreen';
@@ -25,12 +25,15 @@ export default function App() {
     // { id: '1', title: 'Learn English' }
   ]);
 
-  // if(!isReady){
-  //   return(<AppLoading
-  //        startAsync={loadApplication}
-  //       onError=(err => console.log(err))
-  //     onFinish={() => setIsReady(true)} />)
-  // }
+  if (!isReady) {
+    return (
+      <AppLoading
+        startAsync={loadApplication}
+        onFinish={() => setIsReady(true)}
+        onError={(err) => console.log(err)}
+      />
+    );
+  }
 
   const addTodo = (title) => {
     setTodos((prev) => [
