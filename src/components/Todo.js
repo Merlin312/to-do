@@ -1,5 +1,5 @@
-import React from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import React from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 export const Todo = ({ todo, onRemove, onOpen }) => {
   return (
@@ -10,11 +10,11 @@ export const Todo = ({ todo, onRemove, onOpen }) => {
       delayLongPress={2000}
     >
       <View style={styles.todo}>
-        <Text>{todo.title}</Text>
+        <Text style={styles.title}>{todo.title}</Text>
       </View>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   todo: {
@@ -24,6 +24,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#eee',
     borderRadius: 5,
-    marginBottom: 10
-  }
-})
+    marginBottom: 10,
+  },
+  title: {
+    fontFamily: 'roboto-bold',
+    // fontSize: 18,
+  },
+});
