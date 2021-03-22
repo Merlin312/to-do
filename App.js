@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import * as Font from 'expo-font';
 // import AppLoading from 'expo';
 import AppLoading from 'expo-app-loading';
@@ -101,7 +101,7 @@ export default function App() {
 
   return (
     <View>
-      <Navbar title="Todo App!" />
+      <Navbar title="Todo App" />
       <View style={styles.container}>{content}</View>
     </View>
   );
