@@ -22,12 +22,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
       },
       ios: {
-        backgroundColor: THEME.MAIN_IOS_COLOR,
+        // backgroundColor:
+        borderBottomColor: THEME.MAIN_IOS_COLOR,
+        borderBottomWidth: 2,
       },
     }),
   },
   text: {
-    color: 'white',
+    color: Platform.OS === 'ios' ? THEME.MAIN_IOS_COLOR : '#fff',
     fontSize: 20,
   },
 });

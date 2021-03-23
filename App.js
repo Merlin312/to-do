@@ -7,6 +7,7 @@ import AppLoading from 'expo-app-loading';
 import { Navbar } from './src/components/Navbar';
 import { MainScreen } from './src/screens/MainScreen';
 import { TodoScreen } from './src/screens/TodoScreen';
+import { THEME } from './src/theme';
 
 //асинхронна функція для загрузики шрифтів
 async function loadApplication() {
@@ -101,7 +102,7 @@ export default function App() {
 
   return (
     <View>
-      <Navbar title="Todo App" />
+      <Navbar title="Todo App!" />
       <View style={styles.container}>{content}</View>
     </View>
   );
@@ -109,7 +110,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
+    paddingHorizontal: THEME.PADDING_HORIZONTAL,
     paddingVertical: 20,
   },
 });

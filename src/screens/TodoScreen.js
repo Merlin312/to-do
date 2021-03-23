@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { EditMaodal } from '../components/EditModal';
 import { AppCard } from '../components/ui/AppCard';
@@ -49,7 +49,7 @@ export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
             color={THEME.DANGER_COLOR}
             onPress={() => onRemove(todo.id)}
           >
-            <FontAwesome name="remove" size={20} color="#fff" />
+            <Ionicons name="remove-circle" size={20} color="#fff" />
           </AppButton>
         </View>
       </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   botton: {
-    width: '40%',
+    width: Dimensions.get('window').width / 3,
   },
   titles: {
     fontSize: 20,
