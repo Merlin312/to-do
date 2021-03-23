@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -8,7 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import { THEME } from '../theme';
-import { useState } from 'react';
+import { AppButton } from './ui/AppButton';
 
 export const EditMaodal = ({ visible, onCancel, value, onSave }) => {
   const [title, setTitle] = useState(value);
@@ -54,12 +54,10 @@ export const EditMaodal = ({ visible, onCancel, value, onSave }) => {
           maxLength={64}
         />
         <View style={styles.buttons}>
-          <Button
-            title="Відмінити"
-            onPress={onCancel}
-            color={THEME.DANGER_COLOR}
-          />
-          <Button title="Зберегти" onPress={saveHandler} />
+          <AppButton onPress={onCancel} color={THEME.DANGER_COLOR}>
+            Відмінити
+          </AppButton>
+          <AppButton onPress={saveHandler}>Зберегти</AppButton>
         </View>
       </View>
     </Modal>

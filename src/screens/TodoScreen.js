@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { EditMaodal } from '../components/EditModal';
 import { AppCard } from '../components/ui/AppCard';
 import { THEME } from '../theme';
+import { AppTextBold } from '../components/ui/AppTextBold';
+import { AppButton } from '../components/ui/AppButton';
 
 export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
   const [modal, setModal] = useState(false);
@@ -24,25 +27,30 @@ export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
       <AppCard style={styles.card}>
         <View style={styles.bottons}>
           <View>
-            <Text style={styles.titles}>{todo.title}</Text>
+            <AppTextBold style={styles.titles}>{todo.title}</AppTextBold>
           </View>
           <View>
-            <Button title="Ред." onPress={() => setModal(true)} />
+            <AppButton onPress={() => setModal(true)}>
+              <FontAwesome name="edit" size={20} />
+            </AppButton>
           </View>
         </View>
       </AppCard>
 
       <View style={styles.bottons}>
-        <View>
-          <Button title="Назад" onPress={goBack} color={THEME.GREY_COLOR} />
+        <View style={styles.botton}>
+          <AppButton onPress={goBack} color={THEME.GREY_COLOR}>
+            <Ionicons name="chevron-back" size={20} color="#fff" />
+          </AppButton>
         </View>
 
         <View style={styles.botton}>
-          <Button
-            title="Видалити"
+          <AppButton
             color={THEME.DANGER_COLOR}
             onPress={() => onRemove(todo.id)}
-          />
+          >
+            <FontAwesome name="remove" size={20} color="#fff" />
+          </AppButton>
         </View>
       </View>
     </View>
@@ -56,15 +64,13 @@ const styles = StyleSheet.create({
   },
   card: {
     marginBottom: 20,
-    padding: 10,
-    // justifyContent: 'space-around',
+    padding: 15,
   },
   botton: {
     width: '40%',
   },
   titles: {
-    // paddingRight: 10,
     fontSize: 20,
-    paddingTop: 7,
+    paddingTop: 8,
   },
 });
