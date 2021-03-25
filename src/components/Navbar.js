@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
       },
       ios: {
-        // backgroundColor:
         borderBottomColor: THEME.MAIN_IOS_COLOR,
         borderBottomWidth: 2,
       },

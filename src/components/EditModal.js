@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {
+  View,
   StyleSheet,
   TextInput,
-  View,
   Button,
   Modal,
   Alert,

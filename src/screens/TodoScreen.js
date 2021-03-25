@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   botton: {
+    //ширина коригується відповідно до ширини екрану користувача
     width: Dimensions.get('window').width / 3,
   },
   titles: {

@@ -26,7 +26,6 @@ export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {
   let content = (
     <View style={{ width: deviceWidth }}>
       <FlatList
-        c
         keyExtractor={(item) => item.id.toString()}
         data={todos}
         renderItem={({ item }) => (
