@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { StyleSheet, View, Alert } from 'react-native';
 import * as Font from 'expo-font';
 // import AppLoading from 'expo';
 import AppLoading from 'expo-app-loading';
 
 import { TodoState } from './src/context/todo/TodoState';
+import { ScreenState } from './src/context/screen/ScreenState';
+
 import { MainLayout } from './src/MainLayout';
 
 //асинхронна функція для загрузики шрифтів
@@ -28,8 +31,10 @@ export default function App() {
   }
 
   return (
-    <TodoState>
-      <MainLayout />
-    </TodoState>
+    <ScreenState>
+      <TodoState>
+        <MainLayout />
+      </TodoState>
+    </ScreenState>
   );
 }
